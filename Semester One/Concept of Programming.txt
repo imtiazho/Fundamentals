@@ -1,0 +1,1 @@
+Basic programming concepts: Programming is the process of designing and building executable computer software to accomplish a specific computing result or to perform a particular task. It involves writing code in a programming language, which is a set of instructions that a computer can understand and execute.
