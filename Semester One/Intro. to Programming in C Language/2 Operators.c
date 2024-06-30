@@ -59,7 +59,5 @@ int main()
         Post-Decrement (b--): Returns the current value of b, then decrements the value of b by 1.
     **/
 
-
-
     return 0;
 }
