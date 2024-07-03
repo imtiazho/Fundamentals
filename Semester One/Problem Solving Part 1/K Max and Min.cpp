@@ -17,11 +17,11 @@ int main()
     /**
     // Another way
     // Max Check
-    if(A > B && A > C)
+    if(A >= B && A >= C)
     {
         maximum = A;
     }
-    else if(B > A && B > C)
+    else if(B >= A && B >= C)
     {
         maximum = B;
     }
@@ -30,11 +30,11 @@ int main()
     }
 
     // Min Check
-    if(A < B && A < C)
+    if(A <= B && A <= C)
     {
         minimum = A;
     }
-    else if(B < A && B < C)
+    else if(B <= A && B <= C)
     {
         minimum = B;
     }
