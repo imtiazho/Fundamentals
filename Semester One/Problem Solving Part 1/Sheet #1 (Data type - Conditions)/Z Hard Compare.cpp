@@ -9,7 +9,7 @@ int main() {
     // Compute B * log(A) and D * log(C)
     long double leftSide = B * log(A);
     long double rightSide = D * log(C);
-
+    cout << leftSide << " " << rightSide;
     if (leftSide > rightSide) {
         cout << "YES" << endl;
     } else {
