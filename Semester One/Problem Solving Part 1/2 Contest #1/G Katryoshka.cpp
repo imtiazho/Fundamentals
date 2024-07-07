@@ -3,43 +3,24 @@
 using namespace std;
 
 int main() {
-    long long eye, mouth, body;
+    long long int eye, mouth, body;
     cin >> eye >> mouth >> body;
     long long int doll = 0;
-    while (body != 0)
+
+    // This for filtering: One eye, one mouth, and one body.
+    long long int oneSetForm = min(min(eye, mouth), body);
+    doll += oneSetForm;
+    eye -= oneSetForm;
+    mouth -= oneSetForm;
+    body -= oneSetForm;
+
+    if(eye >= 2 && body > 0)
     {
-        if (eye != 0 && mouth != 0)
-        {
-            if (mouth <= eye && mouth <= body)
-            {
-                doll += mouth;
-                body -= mouth;
-                eye -= mouth;
-                mouth = 0;
-            }
-            else if(eye <= mouth && eye <= body)
-            {
-                doll += eye;
-                body -= eye;
-                mouth -= eye;
-                eye = 0;
-            }
-        }
-        else
-        {
-            long long int setTwoEye = eye / 2;
-            if (setTwoEye >= body)
-            {
-                doll += body;
-            }
-            else
-            {
-                doll += setTwoEye;
-            }
-            break;
-        }
+        long long extraDoll = min((eye / 2), body);
+        doll += extraDoll;
     }
 
     cout << doll;
     return 0;
 }
+
