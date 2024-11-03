@@ -1,35 +1,36 @@
-#include<stdio.h>
-#include<limits.h>
+#include <stdio.h>
+#include <limits.h>
 
-int main()
-{
-    int T, N = 0;
-    scanf("%d", &T);
-    
-    long long int A[N];
-    for(int i = 0; i < T; i++)
-    {
-        scanf("%d", &N);
+int main() {
+    long long int T, N;
+    scanf("%lld", &T);
+
+    for (int t = 0; t < T; t++) {
+        scanf("%lld", &N);
         
-        A[N];
-        for(int j = 0; j < N; j++)
-        {
+        long long int A[N];
+        for (int j = 0; j < N; j++) {
             scanf("%lld", &A[j]);
         }
-    }
-    
-    int minResult = INT_MAX;
-    for(int i = 0; i < N; i++)
-    {
-        for(int j = i + 1; j < N; j++)
-        {
-            if(minResult > A[i] + A[j] + j - i)
-            {
-                minResult = A[i] + A[j] + j - i;
+        
+        int minResult = INT_MAX;
+        int minPrefix = A[0] - 0;
+
+        for (int j = 1; j < N; j++) {
+            // Calculate the minimum result using the current element and minPrefix
+            int currentResult = A[j] + j + minPrefix;
+            if (currentResult < minResult) {
+                minResult = currentResult;
+            }
+
+            // Update minPrefix for the next iteration
+            if (A[j] - j < minPrefix) {
+                minPrefix = A[j] - j;
             }
         }
+
+        printf("%d\n", minResult);
     }
 
-    printf("%d\n", minResult);
     return 0;
 }
