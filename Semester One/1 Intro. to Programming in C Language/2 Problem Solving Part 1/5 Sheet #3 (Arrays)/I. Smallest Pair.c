@@ -14,16 +14,14 @@ int main() {
         }
         
         int minResult = INT_MAX;
-        int minPrefix = A[0] - 0;
+        int minPrefix = A[0] - 0;  
 
         for (int j = 1; j < N; j++) {
-            // Calculate the minimum result using the current element and minPrefix
             int currentResult = A[j] + j + minPrefix;
             if (currentResult < minResult) {
                 minResult = currentResult;
             }
 
-            // Update minPrefix for the next iteration
             if (A[j] - j < minPrefix) {
                 minPrefix = A[j] - j;
             }
