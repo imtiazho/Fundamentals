@@ -1,6 +1,31 @@
+// https://docs.google.com/document/d/1IbS-qmFx6oRO-GyIG55yavdDUHpfHTNM/edit
 #include <bits/stdc++.h>
 
 using namespace std;
+
+class Node
+{
+public:
+    int val;
+    Node *next;
+
+    Node(int val)
+    {
+        this->val = val;
+        this->next = NULL;
+    }
+};
+
+void printForward(Node *head)
+{
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        cout << temp->val << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
 
 int main()
 {
@@ -109,6 +134,224 @@ int main()
         }
     */
 
+    /*
+        || List operation functions
+        list<int> l = {1, 2, 3, 4, 1, 1, 2, 1, 3};
+        // l.remove(2);
+
+        // l.sort(); // Acending
+        // l.sort(greater<int>()); // Decending
+
+        // l.unique(); // Its has a limitation that it work if the list is sorted
+
+        // l.reverse();
+
+        for (int x : l)
+        {
+            cout << x << " ";
+        }
+    */
+
+    /*
+        ||  List element access and iterators
+        list<int> l = {1, 2, 3, 4, 1, 1, 2, 1, 3};
+
+        // cout << l.front() << endl;
+
+        // cout << l.back() << endl;
+
+        // cout << *next(l.begin(), 2);
+
+        cout << *l.begin() << endl;
+        cout << *l.end(); // this is not work because end pointer thake after last element address
+    */
+
+    /*
+        || Reverse singly linked list Implementation
+        .
+        class Node
+        {
+        public:
+            int val;
+            Node *next;
+
+            Node(int val)
+            {
+                this->val = val;
+                this->next = NULL;
+            }
+        };
+
+        void insertAtTail(Node *&head, Node *&tail, int val)
+        {
+            Node *newNode = new Node(val);
+            if (head == NULL)
+            {
+                head = newNode;
+                tail = newNode;
+                return;
+            }
+
+            tail->next = newNode;
+            tail = tail->next;
+        }
+
+        void reverseLinkedList(Node *&head, Node *temp, Node *&tail)
+        {
+            if (temp->next == NULL)
+            {
+                head = temp;
+                return;
+            }
+            reverseLinkedList(head, temp->next, tail);
+
+            temp->next->next = temp;
+            temp->next = NULL;
+            tail = temp;
+        }
+
+        void printLinkedList(Node *head)
+        {
+            Node *temp = head;
+            while (temp != NULL)
+            {
+                cout << temp->val << " ";
+                temp = temp->next;
+            }
+        }
+        .
+        Node *head = NULL;
+        Node *tail = NULL;
+
+        int val;
+        while (true)
+        {
+            cin >> val;
+            if (val == -1)
+            {
+                break;
+            }
+            insertAtTail(head, tail, val);
+        }
+
+        reverseLinkedList(head, head, tail);
+        printLinkedList(head);
+        // cout << head->val << " " << tail->val;
+    */
+
+    /*
+         || Reverse Doubly linked list
+         .
+         class Node
+         {
+         public:
+             int val;
+             Node *prev;
+             Node *next;
+
+             Node(int val)
+             {
+                 this->val = val;
+                 this->prev = NULL;
+                 this->next = NULL;
+             }
+         };
+
+         void takeInput(Node *&head, Node *&tail, int val)
+         {
+             Node *newNode = new Node(val);
+             if (head == NULL)
+             {
+                 head = newNode;
+                 tail = newNode;
+                 return;
+             }
+             tail->next = newNode;
+             newNode->prev = tail;
+             tail = newNode;
+         }
+
+         void reverseDoubly(Node *head, Node *tail)
+         {
+             for (Node *i = head, *j = tail; i != j && i->prev != j; i = i->next, j = j->prev)
+             {
+                 swap(i->val, j->val);
+             }
+         }
+
+         void printForward(Node *head)
+         {
+             Node *temp = head;
+             while (temp != NULL)
+             {
+                 cout << temp->val << " ";
+                 temp = temp->next;
+             }
+             cout << endl;
+         }
+         .
+         Node *head = NULL;
+         Node *tail = NULL;
+
+         int val;
+         while (true)
+         {
+             cin >> val;
+             if (val == -1)
+             {
+                 break;
+             }
+
+             takeInput(head, tail, val);
+         }
+
+         reverseDoubly(head, tail);
+         printForward(head);
+    */
+
+    /*
+        || Detect cycle implementation
+        .
+        Node *head = new Node(11);
+        Node *a = new Node(12);
+        Node *b = new Node(13);
+        Node *c = new Node(14);
+        Node *d = new Node(15);
+
+        head->next = a;
+        a->next = b;
+        b->next = c;
+        c->next = d;
+
+        // Create cycle
+        d->next = a;
+
+        Node *tortois = head;
+        Node *hare = head;
+
+        bool flag = false;
+        while (hare != NULL && hare->next != NULL)
+        {
+            tortois = tortois->next; // One step
+            hare = hare->next->next; // Dubble step
+
+            if (tortois == hare)
+            {
+                // Cycle Detected
+                flag = true;
+                break;
+            }
+        }
+
+        if (flag)
+        {
+            cout << "Cycyle Detected" << endl;
+        }
+        else
+        {
+            cout << "No Cycle" << endl;
+        }
+    */
 
 
     return 0;
