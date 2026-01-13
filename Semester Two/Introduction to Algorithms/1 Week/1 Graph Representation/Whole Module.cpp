@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     /*
-        || What is Graph? Difference?
+        || What is Graph? Difference? Is a DS. Tree can be cycle but graph not
     */
 
     /*
