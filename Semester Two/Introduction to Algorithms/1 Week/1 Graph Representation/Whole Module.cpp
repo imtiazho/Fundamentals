@@ -14,11 +14,11 @@ int main()
     */
 
     /*
-        || Input graph
+        || Input graph. We can input graph in three ways. 1. Adjacency matrix, 2. Adjacency List, 3. Edge List
     */
 
     /*
-        || Adjacency Matrix : Idea using 2D Array
+        || Adjacency Matrix : Idea using 2D Array. It is like normally init a 2D array with zero. Then it will change with 1. Like if input is [0, 1] then we make this index zero to one. If it is not a directed graph then we have to change [1, 0] index position value with 1.
     */
 
     /*
