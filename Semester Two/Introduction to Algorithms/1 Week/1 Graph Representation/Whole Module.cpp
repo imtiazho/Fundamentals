@@ -109,5 +109,12 @@ int main()
         }
     */
 
+    /*
+        Three Comparison:
+        1. Check two nodes connected or not use Adjacency Matrix
+        2. Check connected nodes from a node use Adjacency List
+        3. If we work with just edges then use Edges List
+    */
+
     return 0;
 }
