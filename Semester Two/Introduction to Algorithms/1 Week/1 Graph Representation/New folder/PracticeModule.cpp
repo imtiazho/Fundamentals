@@ -5,7 +5,6 @@ using namespace std;
 int main()
 {
     
-
     return 0;
 }
 
@@ -124,7 +123,7 @@ int main()
 */
 
 /*
-    Edges List : When we need to print just edges then use it.
+    Edges List : When we need to print just edges then use it. This code is for directed graph
     int n, e;
     cin >> n >> e;
     vector<pair<int, int>> edgeList;
@@ -139,4 +138,24 @@ int main()
     {
         cout << p.first << " " << p.second << endl;
     }
+    .
+    Edges List : When we need to print just edges then use it. This code is for undirected graph
+    int n, e;
+    cin >> n >> e;
+    vector<pair<int, int>> edgeList;
+    while (e--)
+    {
+        int a, b;
+        cin >> a >> b;
+        edgeList.push_back({a, b});
+        edgeList.push_back({b, a}); // This line for undirected graph
+    }
+
+    for (pair<int, int> p : edgeList)
+    {
+        cout << p.first << " " << p.second << endl;
+    }
 */
+
+
+
