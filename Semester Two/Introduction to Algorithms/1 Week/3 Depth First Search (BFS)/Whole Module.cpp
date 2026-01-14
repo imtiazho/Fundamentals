@@ -70,7 +70,7 @@ int main()
             // Auto off hoye jabee cause call korar agee amra check kore nicchi
         
             // Print kore dea
-            cout << si << " ";
+            cout << si << " " << sj << endl;
             visTwoD[si][sj] = true;
         
             // kaj kora
