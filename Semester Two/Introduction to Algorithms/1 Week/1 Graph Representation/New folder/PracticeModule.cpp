@@ -157,5 +157,198 @@ int main()
     }
 */
 
+/*
+    || BFS traversal
+    vector<int> adjList[1005];
+    bool vis[1005];
 
+    void bfs(int src)
+    {
+        queue<int> qu;
+        qu.push(src);
+        vis[src] = true;
+
+        while(!qu.empty())
+        {
+            int parent = qu.front();
+            qu.pop();
+
+            cout << parent << " ";
+
+            for(int child : adjList[parent])
+            {
+                if(!vis[child]) {
+                    qu.push(child);
+                    vis[child] = true;
+                }
+            }
+        }
+    }
+    .
+    int n, e;
+    cin >> n >> e;
+    while (e--)
+    {
+        int a, b;
+        cin >> a >> b;
+        adjList[a].push_back(b);
+        adjList[b].push_back(a);
+    }
+    memset(vis, false, sizeof(vis));
+    bfs(0);
+*/
+
+/*
+    || Check is node visited or not by BFS traversal
+    vector<int> adjList[1005];
+    bool vis[1005];
+
+    void bfs(int src)
+    {
+        queue<int> qu;
+        qu.push(src);
+        vis[src] = true;
+
+        while (!qu.empty())
+        {
+            int parent = qu.front();
+            qu.pop();
+
+            for (int child : adjList[parent])
+            {
+                if (!vis[child])
+                {
+                    qu.push(child);
+                    vis[child] = true;
+                }
+            }
+        }
+    }
+    .
+    int n, e;
+    cin >> n >> e;
+    while (e--)
+    {
+        int a, b;
+        cin >> a >> b;
+        adjList[a].push_back(b);
+        adjList[b].push_back(a);
+    }
+    memset(vis, false, sizeof(vis));
+    int src, dst;
+    cin >> src >> dst;
+    bfs(src);
+
+    if (vis[dst])
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
+*/
+
+/*
+    || Single source shortest path
+    vector<int> adjList[1005];
+    bool vis[1005];
+    int level[1005];
+
+    void bfs(int src)
+    {
+        queue<int> qu;
+        qu.push(src);
+        vis[src] = true;
+        level[src] = 0;
+
+        while (!qu.empty())
+        {
+            int parent = qu.front();
+            qu.pop();
+
+            for (int child : adjList[parent])
+            {
+                if (!vis[child])
+                {
+                    qu.push(child);
+                    vis[child] = true;
+                    level[child] = level[parent] + 1;
+                }
+            }
+        }
+    }
+    .
+    int n, e;
+    cin >> n >> e;
+    while (e--)
+    {
+        int a, b;
+        cin >> a >> b;
+        adjList[a].push_back(b);
+        adjList[b].push_back(a);
+    }
+    memset(vis, false, sizeof(vis));
+    memset(level, -1, sizeof(level));
+    int src, dst;
+    cin >> src >> dst;
+    bfs(src);
+
+    cout << level[dst] << endl;
+*/
+
+/*
+    || Path printing
+    vector<int> adjList[1005];
+    bool vis[1005];
+    int par[1005];
+
+    void bfs(int src)
+    {
+        queue<int> qu;
+        qu.push(src);
+        vis[src] = true;
+
+        while (!qu.empty())
+        {
+            int parent = qu.front();
+            qu.pop();
+
+            for (int child : adjList[parent])
+            {
+                if (!vis[child])
+                {
+                    qu.push(child);
+                    vis[child] = true;
+                    par[child] = parent;
+                }
+            }
+        }
+    }
+    .
+    int n, e;
+    cin >> n >> e;
+    while (e--)
+    {
+        int a, b;
+        cin >> a >> b;
+        adjList[a].push_back(b);
+        adjList[b].push_back(a);
+    }
+    memset(vis, false, sizeof(vis));
+    memset(par, -1, sizeof(par));
+
+    int src, dst;
+    cin >> src >> dst;
+    bfs(src);
+
+    vector<int> path;
+    int node = dst;
+    while (node != -1)
+    {
+        path.push_back(node);
+        node = par[node];
+    }
+    reverse(path.begin(), path.end());
+    for (int x : path)
+    {
+        cout << x << " ";
+    }
+*/
 
