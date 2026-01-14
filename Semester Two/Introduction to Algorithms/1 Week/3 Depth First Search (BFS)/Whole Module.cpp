@@ -55,7 +55,15 @@ int main()
         bool vis[1005];
         bool visTwoD[105][105];
         vector<pair<int, int>> mov = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        int n, m;
 
+        bool valid (int i, int j)
+        {
+            if(i < 0 || i >= n || j < 0 || j >= n) return false;
+
+            return true;
+        }
+        
         void dfsFor2D(int si, int sj)
         {
             // Base Case
@@ -71,7 +79,10 @@ int main()
                 int ci, cj;
                 ci = si + mov[i].first;
                 cj = sj + mov[i].second;
-                cout << ci << " " << cj << endl;
+                if(!visTwoD[ci][cj] || && valid(ci, cj) == true)
+                    dfsFor2D(ci, cj);
+                    
+                // cout << ci << " " << cj << endl;
                 // if (vis[child] == false)
                 // {
                 //     dfs(child);
@@ -80,7 +91,6 @@ int main()
         }
         .
         .
-        int n, m;
         cin >> n >> m;
         for (int i = 0; i < n; i++)
         {
@@ -92,6 +102,8 @@ int main()
     
         int si, sj;
         cin >> si >> sj;
+
+        memset(dfsFor2D, false, sizeof(dfsFor2D));
         dfsFor2D(si, sj);
     */
     
