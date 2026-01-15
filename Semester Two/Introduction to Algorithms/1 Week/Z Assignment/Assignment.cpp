@@ -2,47 +2,39 @@
 
 using namespace std;
 
-int grid[1005][1005];
-bool vis[1005][1005];
+vector<int> adjList[1005];
+bool vis[1005];
 
 int main()
 {
-    int n, m;
-    cin >> n >> m;
+    int n, e;
+    cin >> n >> e;
 
-    memset(grid, 0, sizeof(grid));
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            if (i == j)
-            {
-                grid[i][j] = 1;
-            }
-        }
-    }
-
-    for (int i = 0; i < m; i++)
+    while (e--)
     {
         int a, b;
         cin >> a >> b;
-        grid[a][b] = 1;
+        adjList[a].push_back(b);
+        adjList[b].push_back(a);
     }
 
     int Q;
     cin >> Q;
     while (Q--)
     {
-        int a, b;
-        cin >> a >> b;
-        if (grid[a][b])
+        int x;
+        cin >> x;
+        vector<int> res;
+        for (int a : adjList[x])
         {
-            cout << "YES" << endl;
+            res.push_back(a);
         }
-        else
+        sort(res.begin(), res.end(), greater<>());
+        for(int i : res)
         {
-            cout << "NO" << endl;
+            cout << i << " ";
         }
+        cout << endl;
     }
 
     return 0;
