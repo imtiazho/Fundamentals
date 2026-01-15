@@ -1,5 +1,5 @@
 /*
-    || Problem Statement:  You will be given an undirected graph as input. Then you will be given a node N. You need to tell the number of nodes that can be visited from node N.
+    ||  You will be given an undirected graph as input. You need to tell the number of nodes in each component in ascending order.
 */
 #include <bits/stdc++.h>
 
@@ -7,7 +7,7 @@ using namespace std;
 
 vector<int> adjList[105];
 bool vis[105];
-int counter = 0;
+int counter;
 
 void bfs(int src)
 {
@@ -46,10 +46,23 @@ int main()
     }
 
     memset(vis, false, sizeof(vis));
-    int src;
-    cin >> src;
-    bfs(src);
 
-    cout << counter << endl;
+    vector<int> numbs;
+    for (int i = 0; i < n; i++)
+    {
+        if (!vis[i])
+        {
+            counter = 0;
+            bfs(i);
+            numbs.push_back(counter);
+        }
+    }
+
+    sort(numbs.begin(), numbs.end());
+    for(int x : numbs)
+    {
+        cout << x << " ";
+    }
+    
     return 0;
 }

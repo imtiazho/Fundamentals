@@ -1,5 +1,5 @@
 /*
-    || Problem Statement:  You will be given an undirected graph as input. Then you will be given a node N. You need to tell the number of nodes that can be visited from node N.
+    || Problem Statement: You will be given an undirected graph as input. You need to tell the number of components in this graph.
 */
 #include <bits/stdc++.h>
 
@@ -19,8 +19,6 @@ void bfs(int src)
     {
         int par = qu.front();
         qu.pop();
-
-        counter++;
 
         for (int child : adjList[par])
         {
@@ -46,10 +44,17 @@ int main()
     }
 
     memset(vis, false, sizeof(vis));
-    int src;
-    cin >> src;
-    bfs(src);
+
+    for (int i = 0; i < n; i++)
+    {
+        if (!vis[i])
+        {
+            bfs(i);
+            counter++;
+        }
+    }
 
     cout << counter << endl;
+    
     return 0;
 }
