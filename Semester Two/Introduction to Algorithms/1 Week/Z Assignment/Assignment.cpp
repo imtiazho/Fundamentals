@@ -5,7 +5,7 @@ using namespace std;
 char grid[1005][1005];
 bool vis[1005][1005];
 vector<pair<int, int>> mov = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-int n, m;
+int n, m, counter = 0;
 pair<int, int> A, B;
 
 bool valid(int i, int j)
@@ -25,7 +25,7 @@ void dfs(int si, int sj)
         ci = si + mov[i].first;
         cj = sj + mov[i].second;
 
-        if (!vis[ci][cj] && valid(ci, cj) && grid[ci][cj] != '#')
+        if (!vis[ci][cj] && valid(ci, cj) && grid[ci][cj] == '.')
         {
             dfs(ci, cj);
         }
@@ -40,31 +40,23 @@ int main()
         for (int j = 0; j < m; j++)
         {
             cin >> grid[i][j];
-            if (grid[i][j] == 'A')
-            {
-                A.first = i;
-                A.second = j;
-            }
-            if (grid[i][j] == 'B')
-            {
-                B.first = i;
-                B.second = j;
-            }
         }
     }
 
     memset(vis, false, sizeof(vis));
-    dfs(A.first, A.second);
-
-    if (vis[B.first][B.second])
+    for (int i = 0; i < n; i++)
     {
-        cout << "YES" << endl;
-    }
-    else
-    {
-        cout << "NO" << endl;
+        for (int j = 0; j < m; j++)
+        {
+            if (grid[i][j] == '.' && !vis[i][j])
+            {
+                dfs(i, j);
+                counter++;
+            }
+        }
     }
 
+    cout << counter << endl;
     return 0;
 }
 
@@ -167,3 +159,143 @@ int main()
         return 0;
     }
 */
+
+/*
+    || Can we go?
+    #include <bits/stdc++.h>
+
+    using namespace std;
+
+    char grid[1005][1005];
+    bool vis[1005][1005];
+    vector<pair<int, int>> mov = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    int n, m;
+    pair<int, int> A, B;
+
+    bool valid(int i, int j)
+    {
+        if (i < 0 || i >= n || j < 0 || j >= m)
+            return false;
+        return true;
+    }
+
+    void dfs(int si, int sj)
+    {
+        vis[si][sj] = true;
+
+        for (int i = 0; i < 4; i++)
+        {
+            int ci, cj;
+            ci = si + mov[i].first;
+            cj = sj + mov[i].second;
+
+            if (!vis[ci][cj] && valid(ci, cj) && grid[ci][cj] != '#')
+            {
+                dfs(ci, cj);
+            }
+        }
+    }
+
+    int main()
+    {
+        cin >> n >> m;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                cin >> grid[i][j];
+                if (grid[i][j] == 'A')
+                {
+                    A.first = i;
+                    A.second = j;
+                }
+                if (grid[i][j] == 'B')
+                {
+                    B.first = i;
+                    B.second = j;
+                }
+            }
+        }
+
+        memset(vis, false, sizeof(vis));
+        dfs(A.first, A.second);
+
+        if (vis[B.first][B.second])
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
+
+        return 0;
+    }
+*/
+
+/*
+    || Count Apartment
+    #include <bits/stdc++.h>
+
+    using namespace std;
+
+    char grid[1005][1005];
+    bool vis[1005][1005];
+    vector<pair<int, int>> mov = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    int n, m, counter = 0;
+    pair<int, int> A, B;
+
+    bool valid(int i, int j)
+    {
+        if (i < 0 || i >= n || j < 0 || j >= m)
+            return false;
+        return true;
+    }
+
+    void dfs(int si, int sj)
+    {
+        vis[si][sj] = true;
+
+        for (int i = 0; i < 4; i++)
+        {
+            int ci, cj;
+            ci = si + mov[i].first;
+            cj = sj + mov[i].second;
+
+            if (!vis[ci][cj] && valid(ci, cj) && grid[ci][cj] == '.')
+            {
+                dfs(ci, cj);
+            }
+        }
+    }
+
+    int main()
+    {
+        cin >> n >> m;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                cin >> grid[i][j];
+            }
+        }
+
+        memset(vis, false, sizeof(vis));
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                if (grid[i][j] == '.' && !vis[i][j])
+                {
+                    dfs(i, j);
+                    counter++;
+                }
+            }
+        }
+
+        cout << counter << endl;
+        return 0;
+    }
+*/
+
+// ..
