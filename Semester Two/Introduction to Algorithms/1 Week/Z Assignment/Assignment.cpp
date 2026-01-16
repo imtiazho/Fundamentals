@@ -17,6 +17,7 @@ bool valid(int i, int j)
 
 void dfs(int si, int sj)
 {
+    counter++;
     vis[si][sj] = true;
 
     for (int i = 0; i < 4; i++)
@@ -44,19 +45,28 @@ int main()
     }
 
     memset(vis, false, sizeof(vis));
+
+    vector<int> rooms;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
         {
             if (grid[i][j] == '.' && !vis[i][j])
             {
+                counter = 0;
                 dfs(i, j);
-                counter++;
+                rooms.push_back(counter);
             }
         }
     }
 
-    cout << counter << endl;
+    sort(rooms.begin(), rooms.end());
+    for (int x : rooms)
+    {
+        cout << x << " ";
+    }
+
+
     return 0;
 }
 
