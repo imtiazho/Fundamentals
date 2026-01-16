@@ -2,39 +2,67 @@
 
 using namespace std;
 
-vector<int> adjList[1005];
-bool vis[1005];
+char grid[1005][1005];
+bool vis[1005][1005];
+vector<pair<int, int>> mov = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+int n, m;
+pair<int, int> A, B;
+
+bool valid(int i, int j)
+{
+    if (i < 0 || i >= n || j < 0 || j >= m)
+        return false;
+    return true;
+}
+
+void dfs(int si, int sj)
+{
+    vis[si][sj] = true;
+
+    for (int i = 0; i < 4; i++)
+    {
+        int ci, cj;
+        ci = si + mov[i].first;
+        cj = sj + mov[i].second;
+
+        if (!vis[ci][cj] && valid(ci, cj) && grid[ci][cj] != '#')
+        {
+            dfs(ci, cj);
+        }
+    }
+}
 
 int main()
 {
-    int n, e;
-    cin >> n >> e;
-
-    while (e--)
+    cin >> n >> m;
+    for (int i = 0; i < n; i++)
     {
-        int a, b;
-        cin >> a >> b;
-        adjList[a].push_back(b);
-        adjList[b].push_back(a);
+        for (int j = 0; j < m; j++)
+        {
+            cin >> grid[i][j];
+            if (grid[i][j] == 'A')
+            {
+                A.first = i;
+                A.second = j;
+            }
+            if (grid[i][j] == 'B')
+            {
+                B.first = i;
+                B.second = j;
+            }
+        }
     }
 
-    int Q;
-    cin >> Q;
-    while (Q--)
+    memset(vis, false, sizeof(vis));
+    dfs(A.first, A.second);
+
+    if (vis[B.first][B.second])
     {
-        int x;
-        cin >> x;
-        vector<int> res;
-        for (int a : adjList[x])
-        {
-            res.push_back(a);
-        }
-        sort(res.begin(), res.end(), greater<>());
-        for(int i : res)
-        {
-            cout << i << " ";
-        }
-        cout << endl;
+        cout << "YES" << endl;
+    }
+    else
+    {
+        cout << "NO" << endl;
     }
 
     return 0;
@@ -88,6 +116,52 @@ int main()
             {
                 cout << "NO" << endl;
             }
+        }
+
+        return 0;
+    }
+*/
+
+/*
+    || Problem Two
+    .
+    #include <bits/stdc++.h>
+
+    using namespace std;
+
+    vector<int> adjList[1005];
+    bool vis[1005];
+
+    int main()
+    {
+        int n, e;
+        cin >> n >> e;
+
+        while (e--)
+        {
+            int a, b;
+            cin >> a >> b;
+            adjList[a].push_back(b);
+            adjList[b].push_back(a);
+        }
+
+        int Q;
+        cin >> Q;
+        while (Q--)
+        {
+            int x;
+            cin >> x;
+            vector<int> res;
+            for (int a : adjList[x])
+            {
+                res.push_back(a);
+            }
+            sort(res.begin(), res.end(), greater<>());
+            for(int i : res)
+            {
+                cout << i << " ";
+            }
+            cout << endl;
         }
 
         return 0;
