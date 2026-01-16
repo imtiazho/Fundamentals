@@ -308,4 +308,78 @@ int main()
     }
 */
 
+/*
+    || Count rooms in apartment
+    #include <bits/stdc++.h>
+
+    using namespace std;
+
+    char grid[1005][1005];
+    bool vis[1005][1005];
+    vector<pair<int, int>> mov = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    int n, m, counter = 0;
+    pair<int, int> A, B;
+
+    bool valid(int i, int j)
+    {
+        if (i < 0 || i >= n || j < 0 || j >= m)
+            return false;
+        return true;
+    }
+
+    void dfs(int si, int sj)
+    {
+        counter++;
+        vis[si][sj] = true;
+
+        for (int i = 0; i < 4; i++)
+        {
+            int ci, cj;
+            ci = si + mov[i].first;
+            cj = sj + mov[i].second;
+
+            if (!vis[ci][cj] && valid(ci, cj) && grid[ci][cj] == '.')
+            {
+                dfs(ci, cj);
+            }
+        }
+    }
+
+    int main()
+    {
+        cin >> n >> m;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                cin >> grid[i][j];
+            }
+        }
+
+        memset(vis, false, sizeof(vis));
+
+        vector<int> rooms;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                if (grid[i][j] == '.' && !vis[i][j])
+                {
+                    counter = 0;
+                    dfs(i, j);
+                    rooms.push_back(counter);
+                }
+            }
+        }
+
+        sort(rooms.begin(), rooms.end());
+        for (int x : rooms)
+        {
+            cout << x << " ";
+        }
+
+
+        return 0;
+    }
+*/
 // ..
