@@ -132,7 +132,7 @@ int main()
             if(vis[child] && parent[src] != child)
                 flag = true;
 
-            if(!vis[src])
+            if(!vis[child])
             {
                 parent[child] = src;
                 dfs(child);
