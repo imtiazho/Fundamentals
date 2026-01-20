@@ -175,7 +175,6 @@ int main()
 
             for (int child : adjList[src])
             {
-
                 if (vis[child] && pathVis[child])
                 {
                     cycle = true;
