@@ -1,5 +1,5 @@
 /*
-    || Dijkstra Most Optimize version
+    || Dijkstra Most Optimize version: In this version it take limited space for dijkstra algorith cuase we declare priority queue and declare adjList in the scope of main function so that it can use exact node number not random integer numbers
 */
 
 // class Solution {
