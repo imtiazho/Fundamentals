@@ -47,3 +47,64 @@ int main()
 
     return 0;
 }
+
+/*
+    class Solution {
+public:
+    int dis[105];
+    vector<pair<int, int>> adjList[105];
+
+    void dijkstra(int src)
+    {
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> qu;
+        qu.push({0, src});
+        dis[src] = 0;
+
+        while(!qu.empty())
+        {
+            pair<int, int> par = qu.top();
+            int parDis = par.first;
+            int parNode = par.second;
+            qu.pop();
+
+            for(auto child : adjList[parNode])
+            {
+                int childNode = child.first;
+                int childDis = child.second;
+                
+                if(parDis + childDis < dis[childNode])
+                {
+                    dis[childNode] = parDis + childDis;
+                    qu.push({dis[childNode], childNode});
+                }
+            }
+        }
+
+    }
+
+    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
+        for(auto time : times)
+        {
+            adjList[time[0]].push_back({time[1], time[2]});
+        }
+
+        for(int i = 1; i <= n; i++)
+            dis[i] = INT_MAX;
+
+        dijkstra(k);
+
+        int mx = INT_MIN;
+        for(int x : dis)
+        {
+            if(x == INT_MAX) return -1;
+
+            if(x > mx)
+            {
+                mx = x;
+            }
+        }
+
+        return mx;
+    }
+};
+*/
