@@ -117,7 +117,7 @@ int main()
     */
 
     /*
-        || Detect negative weighted cycle using Bellman-Ford
+        || Detect negative weighted cycle using Bellman-Ford :: In the operation we run this loop one more time of n - 1. If value continue to update then we can say it is a negative cycle otherwise NO.
         .
         class Edge
         {
@@ -149,6 +149,7 @@ int main()
                 }
             }
 
+            // Run loop on all edge list for one time
             bool cycle = false;
             for (auto ed : edgeList)
             {
@@ -174,23 +175,22 @@ int main()
         .
         int n, e;
         cin >> n >> e;
-    
+
         while (e--)
         {
             int a, b, c;
             cin >> a >> b >> c;
             edgeList.push_back(Edge(a, b, c));
         }
-    
+
         for (int i = 0; i < n; i++)
         {
             dis[i] = INT_MAX;
         }
         dis[0] = 0;
-    
+
         bellmanFord(n);
     */
-
 
     return 0;
 }
