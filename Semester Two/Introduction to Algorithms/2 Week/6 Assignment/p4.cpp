@@ -80,24 +80,28 @@ int main()
             }
             cout << endl;
         }
-        return 0;
     }
-    else{
-        // while(1)
-        // {
-        //     pair<int, int> par = parent[di][dj];
-        //     int i = par.first;
-        //     int j = par.second;
+    else
+    {
+        int i = di, j = dj;
+        while (grid[i][j] != 'R')
+        {
+            if (grid[i][j] != 'R' && grid[i][j] != 'D')
+                grid[i][j] = 'X';
 
-        //     if(grid[i][j] == 'R')
-        //     {
-        //         break;
-        //     }
+            pair<int, int> par = parent[i][j];
+            i = par.first;
+            j = par.second;
+        }
 
-
-        // }
-
-
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+                cout << grid[i][j];
+            }
+            cout << endl;
+        }
     }
 
     return 0;

@@ -248,7 +248,7 @@ void bfs(int src)
                     {
                         qu.push(child);
                         vis[child] = true;
-                        level[child] = par + 1;
+                        level[child] = level[par] + 1;
                         parent[child] = par;
                     }
                 }
