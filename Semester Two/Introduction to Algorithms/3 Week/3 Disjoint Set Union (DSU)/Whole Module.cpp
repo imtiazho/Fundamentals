@@ -105,6 +105,9 @@ int main()
 
     /*
         || Union Operation on DSU
+        int parent[1005];
+        int groupSize[1005]
+        
         void dsuUnion(int node1, int node2)
         {
             int leder1 = find(node1);
