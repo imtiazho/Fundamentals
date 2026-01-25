@@ -128,36 +128,37 @@ int main()
 
     /*
         || Detect cycle in undirected graph using DSU
+        int n, e;
+        cin >> n >> e;
+    
+        bool cycle = false;
+        while (e--)
+        {
+            int a, b;
+            cin >> a >> b;
+    
+            int leaderA = find(a);
+            int leaderB = find(b);
+            if (leaderA == leaderB)
+            {
+                cycle = true;
+            }
+            else
+            {
+                dsuUnion(a, b);
+            }
+        }
+    
+        if (cycle)
+            cout << "Cycle Detected" << endl;
+        else
+            cout << "No Cycle" << endl;
     */
 
     memset(parent, -1, sizeof(parent));
     memset(groupSize, 1, sizeof(groupSize));
 
-    int n, e;
-    cin >> n >> e;
-
-    bool cycle = false;
-    while (e--)
-    {
-        int a, b;
-        cin >> a >> b;
-
-        int leaderA = find(a);
-        int leaderB = find(b);
-        if (leaderA == leaderB)
-        {
-            cycle = true;
-        }
-        else
-        {
-            dsuUnion(a, b);
-        }
-    }
-
-    if (cycle)
-        cout << "Cycle Detected" << endl;
-    else
-        cout << "No Cycle" << endl;
+    
 
     return 0;
 }
