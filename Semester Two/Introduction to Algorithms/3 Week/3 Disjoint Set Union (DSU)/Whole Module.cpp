@@ -104,6 +104,26 @@ int main()
     */
 
     /*
+        || Union Operation on DSU
+        void dsuUnion(int node1, int node2)
+        {
+            int leder1 = find(node1);
+            int leder2 = find(node2);
+        
+            if (groupSize[leder1] >= groupSize[leder2])
+            {
+                parent[leder2] = leder1;
+                groupSize[leder1] += groupSize[leder2];
+            }
+            else
+            {
+                parent[leder1] = leder2;
+                groupSize[leder2] += groupSize[leder1];
+            }
+        }
+    */
+
+    /*
         || Detect cycle in undirected graph using DSU
     */
 
