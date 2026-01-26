@@ -104,37 +104,61 @@ int main()
     */
 
     /*
+        || Union Operation on DSU
+        int parent[1005];
+        int groupSize[1005]
+        
+        void dsuUnion(int node1, int node2)
+        {
+            int leder1 = find(node1);
+            int leder2 = find(node2);
+        
+            if (groupSize[leder1] >= groupSize[leder2])
+            {
+                parent[leder2] = leder1;
+                groupSize[leder1] += groupSize[leder2];
+            }
+            else
+            {
+                parent[leder1] = leder2;
+                groupSize[leder2] += groupSize[leder1];
+            }
+        }
+    */
+
+    /*
         || Detect cycle in undirected graph using DSU
+        int n, e;
+        cin >> n >> e;
+    
+        bool cycle = false;
+        while (e--)
+        {
+            int a, b;
+            cin >> a >> b;
+    
+            int leaderA = find(a);
+            int leaderB = find(b);
+            if (leaderA == leaderB)
+            {
+                cycle = true;
+            }
+            else
+            {
+                dsuUnion(a, b);
+            }
+        }
+    
+        if (cycle)
+            cout << "Cycle Detected" << endl;
+        else
+            cout << "No Cycle" << endl;
     */
 
     memset(parent, -1, sizeof(parent));
     memset(groupSize, 1, sizeof(groupSize));
 
-    int n, e;
-    cin >> n >> e;
-
-    bool cycle = false;
-    while (e--)
-    {
-        int a, b;
-        cin >> a >> b;
-
-        int leaderA = find(a);
-        int leaderB = find(b);
-        if (leaderA == leaderB)
-        {
-            cycle = true;
-        }
-        else
-        {
-            dsuUnion(a, b);
-        }
-    }
-
-    if (cycle)
-        cout << "Cycle Detected" << endl;
-    else
-        cout << "No Cycle" << endl;
+    
 
     return 0;
 }
