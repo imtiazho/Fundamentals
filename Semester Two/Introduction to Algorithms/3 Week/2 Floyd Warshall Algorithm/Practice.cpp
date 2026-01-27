@@ -8,6 +8,7 @@ int main()
     cin >> n >> e;
     int adjMatrix[n][n];
     for (int i = 0; i < n; i++)
+    {
         for (int j = 0; j < n; j++)
         {
             if (i == j)
@@ -19,6 +20,7 @@ int main()
                 adjMatrix[i][j] = INT_MAX;
             }
         }
+    }
 
     while (e--)
     {
@@ -78,7 +80,7 @@ int main()
 }
 
 /*
-    || Floyd Wrshall for directed graph
+    || Floyd Warshall for directed graph
     #include <bits/stdc++.h>
 
     using namespace std;
@@ -291,6 +293,5 @@ int main()
         return 0;
     }
 */
-
 
 // ..
