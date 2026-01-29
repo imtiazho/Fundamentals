@@ -19,7 +19,7 @@ int groupSize[200005];
 
 int find(int node)
 {
-    if (parent[node] == -1)
+    if (parent[node] == node)
     {
         return node;
     }
@@ -30,10 +30,10 @@ int find(int node)
     return leader;
 }
 
-void dsunion(int a, int b)
+void dsuUnion(int node1, int node2)
 {
-    int leaderA = find(a);
-    int leaderB = find(b);
+    int leaderA = find(node1);
+    int leaderB = find(node2);
 
     if (leaderA != leaderB)
     {
@@ -57,7 +57,7 @@ int main()
 
     for (int i = 1; i <= n; i++)
     {
-        parent[i] = -1;
+        parent[i] = i;
         groupSize[i] = 1;
     }
 
@@ -65,21 +65,178 @@ int main()
     {
         int a, b;
         cin >> a >> b;
-        dsunion(a, b);
+
+        dsuUnion(a, b);
     }
 
-    vector<int> leaders;
+    vector<int> connections;
     for (int i = 1; i <= n; i++)
     {
-        if (parent[i] == -1)
-            leaders.push_back(i);
+        if (parent[i] == i)
+            connections.push_back(i);
     }
 
-    cout << leaders.size() - 1 << endl;
-    for (int i = 0; i < leaders.size() - 1; i++)
+    cout << connections.size() - 1 << endl;
+    for (int i = 0; i < connections.size() - 1; i++)
     {
-        cout << leaders[i] << " " << leaders[i + 1] << endl;
+        cout << connections[i] << " " << connections[i + 1] << endl;
     }
-
     return 0;
 }
+
+/*
+    || Soln like module code
+    #include <bits/stdc++.h>
+
+    using namespace std;
+
+    int parent[200005];
+    int groupSize[200005];
+
+    int find(int node)
+    {
+        if (parent[node] == -1)
+        {
+            return node;
+        }
+
+        int leader = find(parent[node]);
+        parent[node] = leader;
+
+        return leader;
+    }
+
+    void dsunion(int a, int b)
+    {
+        int leaderA = find(a);
+        int leaderB = find(b);
+
+        if (leaderA != leaderB)
+        {
+            if (groupSize[leaderA] >= groupSize[leaderB])
+            {
+                parent[leaderB] = leaderA;
+                groupSize[leaderA] += groupSize[leaderB];
+            }
+            else
+            {
+                parent[leaderA] = leaderB;
+                groupSize[leaderB] += groupSize[leaderA];
+            }
+        }
+    }
+
+    int main()
+    {
+        int n, m;
+        cin >> n >> m;
+
+        for (int i = 1; i <= n; i++)
+        {
+            parent[i] = -1;
+            groupSize[i] = 1;
+        }
+
+        while (m--)
+        {
+            int a, b;
+            cin >> a >> b;
+            dsunion(a, b);
+        }
+
+        vector<int> leaders;
+        for (int i = 1; i <= n; i++)
+        {
+            if (parent[i] == -1)
+                leaders.push_back(i);
+        }
+
+        cout << leaders.size() - 1 << endl;
+        for (int i = 0; i < leaders.size() - 1; i++)
+        {
+            cout << leaders[i] << " " << leaders[i + 1] << endl;
+        }
+
+        return 0;
+    }
+*/
+
+/*
+    || Current code i mean last code with the one indexing and change index and leader finding index and code in different style
+    
+    #include <bits/stdc++.h>
+
+    using namespace std;
+
+    int parent[200005];
+    int groupSize[200005];
+
+    int find(int node)
+    {
+        if (parent[node] == node)
+        {
+            return node;
+        }
+
+        int leader = find(parent[node]);
+        parent[node] = leader;
+
+        return leader;
+    }
+
+    void dsuUnion(int node1, int node2)
+    {
+        int leaderA = find(node1);
+        int leaderB = find(node2);
+
+        if (leaderA != leaderB)
+        {
+            if (groupSize[leaderA] >= groupSize[leaderB])
+            {
+                parent[leaderB] = leaderA;
+                groupSize[leaderA] += groupSize[leaderB];
+            }
+            else
+            {
+                parent[leaderA] = leaderB;
+                groupSize[leaderB] += groupSize[leaderA];
+            }
+        }
+    }
+
+    int main()
+    {
+        int n, m;
+        cin >> n >> m;
+
+        for (int i = 1; i <= n; i++)
+        {
+            parent[i] = i;
+            groupSize[i] = 1;
+        }
+
+        while (m--)
+        {
+            int a, b;
+            cin >> a >> b;
+
+            dsuUnion(a, b);
+        }
+
+        vector<int> connections;
+        for (int i = 1; i <= n; i++)
+        {
+            if (parent[i] == i)
+                connections.push_back(i);
+        }
+
+        cout << connections.size() - 1 << endl;
+        for (int i = 0; i < connections.size() - 1; i++)
+        {
+            cout << connections[i] << " " << connections[i + 1] << endl;
+        }
+        return 0;
+    }
+*/
+
+// ..
