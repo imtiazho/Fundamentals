@@ -11,40 +11,27 @@ int main()
         int n;
         cin >> n;
 
-        vector<int> V;
+        vector<pair<long long int, int>> V;
         for (int i = 0; i < n; i++)
         {
             int x;
             cin >> x;
-            V.push_back(x);
+            V.push_back({x, i});
         }
 
-        vector<int> V2 = V;
-        sort(V2.begin(), V2.end(), greater<>());
+        sort(V.begin(), V.end(), greater<pair<long long int, int>>());
 
-        int leftIndexValue = V2[1];
-        int rightIndexValue = V2[0];
-        // int leftIndex;
-        // int rightIndex;
 
-        vector<int> indexArr;
-        for (int i = 0; i < n; i++)
-        {
-            if (V[i] == leftIndexValue)
-            {
-                indexArr.push_back(i);
-            }
-            else if (V[i] == rightIndexValue)
-            {
-                indexArr.push_back(i);
-            }
-        }
+        vector<long long int> indexArr;
+        indexArr.push_back(V[0].second);
+        indexArr.push_back(V[1].second);
 
         sort(indexArr.begin(), indexArr.end());
         for (int x : indexArr)
         {
             cout << x << " ";
         }
+        
         cout << endl;
     }
 
