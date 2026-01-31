@@ -6,7 +6,7 @@ char grid[105][105];
 bool visTwoD[105][105];
 vector<pair<int, int>> mov = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 int n, m;
-int level[105][105];
+int dis[105][105];
 
 bool valid(int i, int j)
 {
@@ -23,7 +23,7 @@ void bfsTwoD(int si, int sj)
     queue<pair<int, int>> qu;
     qu.push({si, sj});
     visTwoD[si][sj] = true;
-    level[si][sj] = 0;
+    dis[si][sj] = 0;
 
     while (!qu.empty())
     {
@@ -42,7 +42,7 @@ void bfsTwoD(int si, int sj)
             {
                 qu.push({ci, cj});
                 visTwoD[ci][cj] = true;
-                level[ci][cj] = level[parI][parJ] + 1;
+                dis[ci][cj] = dis[parI][parJ] + 1;
             }
         }
     }
@@ -62,9 +62,9 @@ int main()
     int si, sj, di, dj; // D for destination
     cin >> si >> sj >> di >> dj;
     memset(visTwoD, false, sizeof(visTwoD));
-    memset(level, -1, sizeof(level));
+    memset(dis, -1, sizeof(dis));
 
     bfsTwoD(si, sj);
-    cout << level[di][dj] << endl;
+    cout << dis[di][dj] << endl;
     return 0;
 }
