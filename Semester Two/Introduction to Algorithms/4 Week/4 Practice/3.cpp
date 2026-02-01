@@ -2,7 +2,7 @@
     || https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/W
 */
 
-// Soln Break down: It basically work with true and false value. In recursive process it gives you true or false value in the result then basis on this you can move next or return. 
+// Soln Break down: It basically work with true and false value. In recursive process it gives you true or false value in the result then basis on this you can move next or return.
 
 #include <bits/stdc++.h>
 
@@ -37,6 +37,7 @@ int main()
         long long int n;
         cin >> n;
 
+        dp.clear();
         if (canReach(n, 1))
             cout << "YES" << endl;
         else
