@@ -42,7 +42,7 @@ void bfsTwoD(int si, int sj)
             {
                 qu.push({ci, cj});
                 visTwoD[ci][cj] = true;
-                // dis[ci][cj] = dis[parI][parJ] + 1;
+                dis[ci][cj] = dis[parI][parJ] + 1;
             }
         }
     }
