@@ -2,45 +2,95 @@
 
 using namespace std;
 
-int dp[1005][1005];
+int parent[100];
+int groupSize[100];
 
-string a, b;
-
-int lcs(int i, int j)
+int find(int node)
 {
-    if (i < 0 || j < 0)
-        return 0;
+    if (parent[node] == -1)
+        return node;
 
-    if(dp[i][j] != -1) return dp[i][j];
+    int leader = find(parent[node]);
+    parent[node] = leader;
 
-    if (a[i] == b[j])
+    return leader;
+}
+
+void dsuUnion(int node1, int node2)
+{
+    int leader1 = find(node1);
+    int leader2 = find(node2);
+
+    if (groupSize[leader1] >= groupSize[leader2])
     {
-        int op1 = lcs(i - 1, j - 1) + 1;
-        return dp[i][j] = op1;
+        parent[leader2] = leader1;
+        groupSize[leader1] += groupSize[leader2];
     }
     else
     {
-        int op1 = lcs(i - 1, j);
-        int op2 = lcs(i, j - 1);
-
-        return dp[i][j] = max(op1, op2);
+        parent[leader1] = leader2;
+        groupSize[leader2] += groupSize[leader1];
     }
+}
+
+class Edge
+{
+public:
+    int a, b, c;
+
+    Edge(int a, int b, int c)
+    {
+        this->a = a;
+        this->b = b;
+        this->c = c;
+    }
+};
+
+bool cmp(Edge l, Edge r)
+{
+    return l.c < r.c;
 }
 
 int main()
 {
-    memset(dp, -1, sizeof(dp));
-    cin >> a >> b;
-    int n = a.size();
-    int m = b.size();
+    memset(parent, -1, sizeof(parent));
+    memset(groupSize, 1, sizeof(groupSize));
 
-    cout << lcs(n - 1, m - 1) << endl;
+    int n, e;
+    cin >> n >> e;
+    vector<Edge> edgeList;
+    while (e--)
+    {
+        int a, b, c;
+        cin >> a >> b >> c;
+        edgeList.push_back(Edge(a, b, c));
+    }
+
+    sort(edgeList.begin(), edgeList.end(), cmp);
+
+    int totalCost = 0;
+    for (auto edge : edgeList)
+    {
+        int parA = find(edge.a);
+        int parB = find(edge.b);
+        if (parA != parB)
+        {
+            dsuUnion(edge.a, edge.b);
+            totalCost += edge.c;
+        }
+    }
+
+    cout << totalCost << endl;
+    // for (auto edge : edgeList)
+    // {
+    //     cout << edge.a << " " << edge.b << " " << edge.c << endl;
+    // }
 
     return 0;
 }
 
 /*
-    || Largest count subsequence
+    || Longest Common Subsequence with DP
     #include <bits/stdc++.h>
 
     using namespace std;
@@ -83,11 +133,10 @@ int main()
     }
 */
 
+/*
+    || Minimum Spanning Tree : Krushkal's Algorithm
 
-
-
-
-
+*/
 
 /*
     || Unknow Code found in File
