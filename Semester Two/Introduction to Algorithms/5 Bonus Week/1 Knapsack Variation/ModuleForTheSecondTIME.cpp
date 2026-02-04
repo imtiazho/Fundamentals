@@ -232,7 +232,7 @@ int main()
 */
 
 /*
-    || Equal sum : are they eqal or not
+    || Equal sum : Are they eqal or not? || Can this list of numbers be split into two groups such that the sum of the numbers in each group is exactly the same?"
     #include <bits/stdc++.h>
 
     using namespace std;
