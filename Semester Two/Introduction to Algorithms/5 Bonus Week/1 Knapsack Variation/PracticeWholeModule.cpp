@@ -2,60 +2,34 @@
 
 using namespace std;
 
+void divide(int a[], int l, int r)
+{
+    for (int i = l; i <= r; i++)
+    {
+        cout << a[i] << " ";
+    }
+    cout << endl;
+
+    if (l >= r)
+        return;
+
+    int mid = (l + r) / 2;
+
+    divide(a, l, mid);
+    divide(a, mid + 1, r);
+}
+
 int main()
 {
     int n;
     cin >> n;
-    int a[n];
+    int val[n];
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        cin >> val[i];
     }
-
-    int m;
-    cin >> m;
-    int b[m];
-    for (int i = 0; i < m; i++)
-    {
-        cin >> b[i];
-    }
-
-    int i = 0, j = 0, curr = 0;
-    int c[n + m];
-    while (i < n && j < m)
-    {
-        if (a[i] < b[j])
-        {
-            c[curr] = a[i];
-            curr++;
-            i++;
-        }
-        else
-        {
-            c[curr] = b[j];
-            curr++;
-            j++;
-        }
-    }
-
-    while (i < n)
-    {
-        c[curr] = a[i];
-        i++;
-        curr++;
-    }
-
-    while (j < m)
-    {
-        c[curr] = a[j];
-        j++;
-        curr++;
-    }
-
-    for(int i = 0; i < n + m; i++)
-    {
-        cout << c[i] << " ";
-    }
+    
+    divide(val, 0, n - 1);
 
     return 0;
 }
@@ -270,4 +244,68 @@ int main()
     }
 */
 
+/*
+    || Conquer part of merge sort
+    #include <bits/stdc++.h>
+
+    using namespace std;
+
+    int main()
+    {
+        int n;
+        cin >> n;
+        int a[n];
+        for (int i = 0; i < n; i++)
+        {
+            cin >> a[i];
+        }
+
+        int m;
+        cin >> m;
+        int b[m];
+        for (int i = 0; i < m; i++)
+        {
+            cin >> b[i];
+        }
+
+        int i = 0, j = 0, curr = 0;
+        int c[n + m];
+        while (i < n && j < m)
+        {
+            if (a[i] < b[j])
+            {
+                c[curr] = a[i];
+                curr++;
+                i++;
+            }
+            else
+            {
+                c[curr] = b[j];
+                curr++;
+                j++;
+            }
+        }
+
+        while (i < n)
+        {
+            c[curr] = a[i];
+            i++;
+            curr++;
+        }
+
+        while (j < m)
+        {
+            c[curr] = a[j];
+            j++;
+            curr++;
+        }
+
+        for(int i = 0; i < n + m; i++)
+        {
+            cout << c[i] << " ";
+        }
+
+        return 0;
+    }
+*/
 // ...
