@@ -2,58 +2,59 @@
 
 using namespace std;
 
-int val[105];
-int dp[105][105];
-
-bool findSubsetSum(int i, int sum)
-{
-    if (i < 0)
-    {
-        return sum == 0;
-    }
-
-    if (dp[i][sum] != -1)
-        return dp[i][sum];
-
-    if (val[i] <= sum)
-    {
-        return dp[i][sum] = findSubsetSum(i - 1, sum - val[i]) + findSubsetSum(i - 1, sum);
-    }
-    else
-    {
-        return dp[i][sum] = findSubsetSum(i - 1, sum);
-    }
-}
-
 int main()
 {
     int n;
     cin >> n;
-    int sum = 0;
+    int a[n];
     for (int i = 0; i < n; i++)
     {
-        cin >> val[i];
-        sum += val[i];
+        cin >> a[i];
     }
 
-    if (sum % 2 == 1)
+    int m;
+    cin >> m;
+    int b[m];
+    for (int i = 0; i < m; i++)
     {
-        cout << "NO" << endl;
+        cin >> b[i];
     }
-    else
-    {
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j <= sum; j++)
-                dp[i][j] = -1;
 
-        if (findSubsetSum(n - 1, sum / 2))
+    int i = 0, j = 0, curr = 0;
+    int c[n + m];
+    while (i < n && j < m)
+    {
+        if (a[i] < b[j])
         {
-            cout << "YES" << endl;
+            c[curr] = a[i];
+            curr++;
+            i++;
         }
         else
         {
-            cout << "NO" << endl;
+            c[curr] = b[j];
+            curr++;
+            j++;
         }
+    }
+
+    while (i < n)
+    {
+        c[curr] = a[i];
+        i++;
+        curr++;
+    }
+
+    while (j < m)
+    {
+        c[curr] = a[j];
+        j++;
+        curr++;
+    }
+
+    for(int i = 0; i < n + m; i++)
+    {
+        cout << c[i] << " ";
     }
 
     return 0;
@@ -250,7 +251,7 @@ int main()
 
         if (weight[i] <= mxW)
         {
-            // Two options 
+            // Two options
             int op1 = knapsack(i, mxW - weight[i]) + val[i];
             int op2 = knapsack(i - 1, mxW);
 
