@@ -34,8 +34,6 @@ int main()
     // cout << s.substr(1, 2) << endl;
     // cout << s.substr(2) << endl; // 2 to end
     
-
-    // 2D vector
     
     return 0;
 }

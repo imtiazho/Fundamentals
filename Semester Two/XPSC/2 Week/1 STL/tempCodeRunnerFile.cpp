@@ -1,4 +1,2 @@
-for (int i = 0; i < v.size(); i++)
-    {
-        cout << v[i] << endl;
-    }
+ = mp.upper_bound(6); // hold greater or equal of targeted
+    cout << it->

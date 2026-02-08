@@ -13,10 +13,11 @@ int main()
     // vector<vector<int>> v(n, vector<int>(m, 0));
     // for (int i = 0; i < n; i++)
     // {
-    //     for (int j = 0; j < m; i++)
+    //     for (int j = 0; j < m; j++)
     //     {
     //         cout << v[i][j] << " ";
     //     }
+    //     cout << endl;
     // }
 
     // Another system of declaration
@@ -28,13 +29,13 @@ int main()
     //     int m;
     //     cin >> m;
     //     vector<int> a;
-    //     for (int j = 0; i < m; j++)
+    //     for (int j = 0; j < m; j++)
     //     {
     //         int x;
     //         cin >> x;
     //         a.push_back(x);
     //     }
-
+        
     //     v.push_back(a);
     // }
 
@@ -48,15 +49,15 @@ int main()
     // }
 
     // Store string in 2D vector
-    int n;
-    cin >> n;
-    vector<string> v;
-    for (int i = 1; i <= n; i++)
-    {
-        string s;
-        cin >> s;
-        v.push_back(s);
-    }
+    // int n;
+    // cin >> n;
+    // vector<string> v;
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     string s;
+    //     cin >> s;
+    //     v.push_back(s);
+    // }
 
     // A way to print
     // for (int i = 0; i < n; i++)
@@ -65,14 +66,14 @@ int main()
     // }
 
     // Another way to print
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < v[i].size(); j++)
-        {
-            cout << v[i][j] << " ";
-        }
-        cout << endl;
-    }
+    // for (int i = 0; i < n; i++)
+    // {
+    //     for (int j = 0; j < v[i].size(); j++)
+    //     {
+    //         cout << v[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
 
     return 0;
 }
