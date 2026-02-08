@@ -6,15 +6,16 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+
     int n;
     cin >> n;
     deque<int> dq;
-    for (int i = 0; i <= n; i++)
+    for (int i = 0; i < n; i++)
     {
         int x;
         cin >> x;
         dq.push_back(x);
-        cin >> dq[i];
+        // cin >> dq[i];
     }
 
     dq.push_front(3);
