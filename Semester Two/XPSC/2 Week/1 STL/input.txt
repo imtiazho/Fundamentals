@@ -1,4 +1,1 @@
-3
-rahim 12
-karim 13
-bablu 34
+1 7 2
