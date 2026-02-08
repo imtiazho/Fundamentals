@@ -82,11 +82,11 @@ int main()
     //     cout << it.first << " -> " << it.second << endl;
     // }
 
-    // auto it = mp.lower_bound(6); // hold greater or equal of targeted
+    // auto it = mp.lower_bound(6); // hold immediate greater or equal of targeted
     // cout << it->first << " " << it->second << endl;
 
     // Upper Bound
-    // auto it = mp.upper_bound(6); // hold greater or equal of targeted
+    // auto it = mp.upper_bound(6); // hold strictly greater of targeted
     // cout << it->first << " " << it->second << endl;
 
     return 0;
