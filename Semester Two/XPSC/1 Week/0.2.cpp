@@ -1,5 +1,5 @@
 /*
-    || https://atcoder.jp/contests/abc209/tasks/abc209_a?lang=en
+    || https://atcoder.jp/contests/abc220/tasks/abc220_a
 */
 
 #include <iostream>
