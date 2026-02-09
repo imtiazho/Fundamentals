@@ -18,7 +18,7 @@ int main()
         string s, ans;
         cin >> s;
 
-        if (s.length() == 1)
+        if (s.length() == 1) // Case one
         {
             if (s[0] == 'z')
             {
@@ -36,7 +36,7 @@ int main()
             bool flag = false;
             for (int i = 0; i < s.size(); i++)
             {
-                if (s[i] == s[i + 1] && !flag)
+                if (s[i] == s[i + 1] && !flag) // Case two
                 {
                     ans.push_back(s[i]);
                     if (s[i] != 'z')
@@ -55,7 +55,7 @@ int main()
                 }
             }
 
-            if (!flag)
+            if (!flag) // Case three
             {
                 ans = s;
                 if (s[s.size() - 1] == 'z')
