@@ -1,4 +1,3 @@
-alina
-maria
-ekaterina
-darya
+NO
+YES
+YES

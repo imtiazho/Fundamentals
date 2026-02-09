@@ -1,9 +1,4 @@
-8
-alina
-maria
-ekaterina
-darya
-darya
-ekaterina
-maria
-alina
+3
+a
+a
+a
