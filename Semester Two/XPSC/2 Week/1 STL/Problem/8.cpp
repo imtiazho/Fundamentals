@@ -11,29 +11,25 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n, m;
-    cin >> n >> m;
-    map<string, string> mp;
-    while(n--)
+    int n;
+    cin >> n;
+    vector<string> v;
+    set<string> track;
+    for (int i = 1; i <= n; i++)
     {
-        string s1, s2;
-        cin >> s1 >> s2;
-        mp[s2] = s1;
+        string s;
+        cin >> s;
+        v.push_back(s);
     }
-    
-    while(m--)
+
+    for (int i = n - 1; i >= 0; i--)
     {
-        string s1, s2;
-        cin >> s1 >> s2;
-
-        string realIp = s2;
-        realIp.pop_back();
-
-        if(mp.find(realIp) != mp.end())
+        if(track.find(v[i]) == track.end())
         {
-            cout << s1 << " " << s2 << " " << '#' << mp[realIp] << endl;
+            cout << v[i] << endl;
+            track.insert(v[i]);
         }
     }
-
+    
     return 0;
 }

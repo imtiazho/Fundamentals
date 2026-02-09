@@ -1,11 +1,4 @@
-or (char c : s)
+f (mp.find(v[i]) == mp.end())
         // {
-        //     if (c == 'B')
-        //     {
-        //         capi.pop_back();
-        //     }
-        //     else if (c == 'b')
-        //     {
-        //         small.pop_back();
-        //     }
+        //     // ans.push_back(v[i]);
         // }
