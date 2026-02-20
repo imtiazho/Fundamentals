@@ -1,5 +1,1 @@
-codeforces
-fft
-algorithm
-w
-meetinthemiddle
+2
