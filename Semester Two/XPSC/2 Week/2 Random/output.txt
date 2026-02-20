@@ -1,9 +1,3 @@
-i
-si
-fungi
-cacti
-sussi
-amogi
-chungi
-ntarsi
-skibidi
+10
+0
+30

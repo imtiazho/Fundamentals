@@ -1,4 +1,4 @@
-// https://www.codechef.com/problems/HEATWAVE
+// https://codeforces.com/problemset/problem/2065/A
 
 #include <bits/stdc++.h>
 
