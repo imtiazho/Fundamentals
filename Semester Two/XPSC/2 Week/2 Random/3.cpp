@@ -1,22 +1,16 @@
-// https://codeforces.com/problemset/problem/2055/A
-
+// https://www.codechef.com/problems/CHANGE_PLZ
 #include <bits/stdc++.h>
 
 using namespace std;
 
 int main()
 {
-	int t;
-	cin >> t;
-	while (t--)
+	int n;
+	cin >> n;
+	while (n--)
 	{
-		int n, a, b;
-		cin >> n >> a >> b;
-
-		int res = abs(a - b);
-		if (res % 2 == 0)
-			cout << "YES" << endl;
-		else
-			cout << "NO" << endl;
+		int x;
+		cin >> x;
+		cout << ((100 - x) / 10) * 10 << endl;
 	}
 }
