@@ -8,43 +8,40 @@ int main()
 {
 	int t;
 	cin >> t;
-	bool resC = false;
 	while (t--)
 	{
 		int n;
 		cin >> n;
-		int m = n;
-		map<int, bool> mp;
-		vector<int> v;
-		while (m--)
+		vector<vector<int>> v(n, vector<int>(n - 1));
+		map<int, int> mp;
+
+		for (int i = 0; i < n; i++)
 		{
-			for (int i = 0; i < n - 1; i++)
+			for (int j = 0; j < n - 1; j++)
 			{
-				int x;
-				cin >> x;
-				if (!mp[x])
+				cin >> v[i][j];
+			}
+			mp[v[i][0]]++;
+		}
+
+		int firstEle = 0;
+		for (auto [num, freq] : mp)
+		{
+			if (freq == n - 1)
+				firstEle = num;
+		}
+
+		cout << firstEle << " ";
+		for (int i = 0; i < n; i++)
+		{
+			if (v[i][0] != firstEle)
+			{
+				for (auto x : v[i])
 				{
-					v.push_back(x);
-					mp[x] = true;
+					cout << x << " ";
 				}
 			}
 		}
-
-		if (resC)
-		{
-			sort(v.begin(), v.end());
-			for (auto x : v)
-				cout << x << " ";
-			cout << endl;
-
-			resC = false;
-		}
-		else{
-			for (auto x : v)
-				cout << x << " ";
-			cout << endl;
-			resC = true;
-		}
-
+		cout << endl;
 	}
 }
