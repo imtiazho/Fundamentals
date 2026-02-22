@@ -15,31 +15,32 @@ int main()
 		string s1, s2;
 		cin >> s1 >> s2;
 
-		string str1 = "", str2 = "";
+		int zero1 = 0, need1 = 0;
+		int zero2 = 0, need2 = 0;
+
 		for (int i = 0; i < n; i++)
 		{
 			if (i % 2 == 0)
 			{
-				str1.push_back(s1[i]);
-				str2.push_back(s2[i]);
+				if (s1[i] == '0')
+					zero1++;
+				need1++;
+
+				if (s2[i] == '0')
+					zero2++;
 			}
 			else
 			{
-				str1.push_back(s2[i]);
-				str2.push_back(s1[i]);
+				if (s2[i] == '0')
+					zero1++;
+
+				if (s1[i] == '0')
+					zero2++;
+				need2++;
 			}
 		}
 
-		int zero1 = 0, zero2 = 0;
-		for (auto c : str1)
-			if (c == '0')
-				zero1++;
-
-		for (auto c : str2)
-			if (c == '0')
-				zero2++;
-			
-		if(zero1 >= (int)ceil(str1.length() / 2.0) && zero2 >= (int)ceil(str2.length() / 2.0))
+		if (zero1 >= need1 && zero2 >= need2)
 			cout << "YES" << endl;
 		else
 			cout << "NO" << endl;
